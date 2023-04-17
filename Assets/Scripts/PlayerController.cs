@@ -17,7 +17,11 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private float jumpSpeed = 10f;
     [SerializeField] private float moveForce;
     [SerializeField] private LayerMask jumpable;
+    [SerializeField] private float bounceSpeed;
+
     private bool isPrep = false;
+
+    private bool jumped= false;
 
     
 
@@ -148,5 +152,8 @@ public class PlayerController : MonoBehaviour
         }
     }
 
-
+    public void Bounce()
+    {
+        playerRb.velocity = new Vector2(playerRb.velocity.x, bounceSpeed);
+    }
 }

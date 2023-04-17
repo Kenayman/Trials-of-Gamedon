@@ -6,6 +6,7 @@ public class Enemy : MonoBehaviour
 {
     [SerializeField] private float Life;
     private Animator anim;
+    private float jumpDmg = 2;
     // Start is called before the first frame update
     void Start()
     {
@@ -20,6 +21,8 @@ public class Enemy : MonoBehaviour
 
             Death();
         }
+
+        anim.SetTrigger("damage");
     }
 
     private void Death()
@@ -27,5 +30,20 @@ public class Enemy : MonoBehaviour
         anim.SetTrigger("death");
         Destroy(gameObject,1f);
         
+    }
+
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (collision.gameObject.CompareTag("Player"))
+        {
+            foreach(ContactPoint2D point in collision.contacts) { 
+            
+                if(point.normal.y <= -0.9)
+                {
+                    collision.gameObject.GetComponent<PlayerController>().Bounce();
+                    
+                }
+            }
+        }
     }
 }
