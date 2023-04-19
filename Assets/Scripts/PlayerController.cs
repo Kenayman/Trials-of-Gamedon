@@ -10,14 +10,19 @@ public class PlayerController : MonoBehaviour
     private BoxCollider2D coll;
     private float direction;
     private PlayerDash playerDash;
+    public bool canMove = true;
+
+   
     public float Direction => direction;
+    
 
     [SerializeField] private float jumpSpeed = 10f;
     [SerializeField] private float moveForce;
     [SerializeField] private LayerMask jumpable;
     [SerializeField] private float bounceSpeed;
+    [SerializeField] private Vector2 bounceForce;
 
-    private bool jumped= false;
+
 
     
 
@@ -36,7 +41,7 @@ public class PlayerController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(!playerDash.IsDashing)
+        if(!playerDash.IsDashing && canMove)
         {
             Jump();
         }
@@ -45,7 +50,7 @@ public class PlayerController : MonoBehaviour
 
     private void FixedUpdate()
     {
-        if(!playerDash.IsDashing)
+        if(!playerDash.IsDashing && canMove)
         {
             Move();
         }
@@ -125,5 +130,11 @@ public class PlayerController : MonoBehaviour
     public void Bounce()
     {
         playerRb.velocity = new Vector2(playerRb.velocity.x, bounceSpeed);
+    }
+
+    public void DmgBounce(Vector2 dmgPoint)
+    {
+        playerRb.velocity = new Vector2(-bounceForce.x * dmgPoint.x, bounceForce.y);
+
     }
 }

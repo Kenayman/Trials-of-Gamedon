@@ -6,9 +6,11 @@ public class EnemyAtack : MonoBehaviour
 {
     [SerializeField] private Transform player;
     [SerializeField] private float distance;
+
     public Vector3 initialPoint;
     private Animator animator;
     private SpriteRenderer spriteRenderer;
+
 
     private void Start()
     {
