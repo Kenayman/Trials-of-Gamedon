@@ -1,15 +1,22 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class PlayerHp : MonoBehaviour
 {
+    [SerializeField] private int heartNumber;
+    [SerializeField] private Image[] hearts;
     [SerializeField] private float Life;
-    private PlayerController controller;
     [SerializeField] private float lostControl;
+
+    private PlayerController controller;
     private Animator animator;
     private PlayerDash dash;
-    private CombatScript combatScript; 
+    private CombatScript combatScript;
+
+    public Sprite fullHeart;
+    public Sprite Emptyheart;
     public bool hasDied = false;
 
     // Start is called before the first frame update
@@ -19,6 +26,11 @@ public class PlayerHp : MonoBehaviour
         animator = GetComponent<Animator>();
         dash = GetComponent<PlayerDash>();
         combatScript = GetComponent<CombatScript>();
+    }
+    private void Update()
+    {
+        HealthUI();
+        
     }
 
     // Update is called once per frame
@@ -62,6 +74,35 @@ public class PlayerHp : MonoBehaviour
             Death();
         }
 
+
+
+    }
+
+    public void HealthUI ()
+    {
+        if (Life > heartNumber)
+        {
+            Life = heartNumber;
+        }
+        for (int i = 0; i < hearts.Length; i++)
+        {
+            if (i < Life)
+            {
+                hearts[i].sprite = fullHeart;
+            }
+            else
+            {
+                hearts[i].sprite = Emptyheart;
+            }
+            if (i < heartNumber)
+            {
+                hearts[i].enabled = true;
+            }
+            else
+            {
+                hearts[i].enabled = false;
+            }
+        }
     }
     IEnumerator NoCollision()
     {

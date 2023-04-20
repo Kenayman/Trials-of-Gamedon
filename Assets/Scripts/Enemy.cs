@@ -5,12 +5,18 @@ using UnityEngine;
 public class Enemy : MonoBehaviour
 {
     [SerializeField] private float Life;
+    [SerializeField] private float jumpSpeed;
+    private CombatScript combatScript;
     private Animator anim;
     private float jumpDmg = 2;
+    public Rigidbody2D rb;
+    public float JumpSpeed => jumpSpeed;
     // Start is called before the first frame update
     void Start()
     {
         anim = GetComponent<Animator>();
+        combatScript = GetComponent<CombatScript>();
+        rb = GetComponent<Rigidbody2D>();
     }
 
     public void TakesDmg(float dmgTaker)
@@ -22,7 +28,9 @@ public class Enemy : MonoBehaviour
             Death();
         }
 
+
         anim.SetTrigger("damage");
+
     }
 
     private void Death()
@@ -36,6 +44,7 @@ public class Enemy : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Player"))
         {
+
             foreach(ContactPoint2D point in collision.contacts) { 
             
                 if(point.normal.y <= -0.9)
@@ -45,5 +54,13 @@ public class Enemy : MonoBehaviour
                 }
             }
         }
+    }
+
+    public void JumpAtack()
+    {
+       
+
+        rb.AddForce(new Vector2(0,jumpSpeed ), ForceMode2D.Impulse);
+
     }
 }

@@ -21,10 +21,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private LayerMask jumpable;
     [SerializeField] private float bounceSpeed;
     [SerializeField] private Vector2 bounceForce;
-
-
-
-    
+    public float JumpSpeed => jumpSpeed;
 
     private enum MovementState { idle, running, jumping, falling, prep, combatIdle}
     private MovementState state = MovementState.idle;
@@ -99,11 +96,11 @@ public class PlayerController : MonoBehaviour
             state = MovementState.idle;
         }
 
-        if (playerRb.velocity.y > 0.1f)
+        if (playerRb.velocity.y > 1f)
         {
             state = MovementState.jumping;
         }
-        if (playerRb.velocity.y < -0.1f)
+        if (playerRb.velocity.y < -2f)
         {
             state = MovementState.falling;
         }

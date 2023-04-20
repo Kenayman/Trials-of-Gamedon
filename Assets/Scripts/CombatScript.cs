@@ -15,13 +15,19 @@ public class CombatScript : MonoBehaviour
     private int currentAtack = 0;
     private Animator animator;
     private PlayerController playerController;
+    private Enemy enemy;
+
+
 
     private int facingDirection = 1; // 1 para derecha, -1 para izquierda
+    private bool isInAir = false;
+    public bool IsInAir => isInAir;
 
     private void Start()
     {
         animator = GetComponent<Animator>();
         playerController = transform.GetComponent<PlayerController>();
+        enemy = transform.GetComponent<Enemy>();
 
     }
 
@@ -64,6 +70,7 @@ public class CombatScript : MonoBehaviour
 
     private void Punch()
     {
+
         damage = 2;
         if (currentAtack == 0)
         {
@@ -88,11 +95,17 @@ public class CombatScript : MonoBehaviour
 
     private void Heavy()
     {
+        
         if (playerController.IsGrounded()) 
         {
             damage = 3;
             animator.SetTrigger("Heavy");
             StartCoroutine(ActivateDamage(0f));
+            StartCoroutine(JumpAtack(0.2f));
+            isInAir = true;
+
+
+
 
 
         }
@@ -100,7 +113,7 @@ public class CombatScript : MonoBehaviour
         {
             damage = 5;
             animator.SetTrigger("heavyDown");
-            StartCoroutine(ActivateDamage(0.5f));
+            StartCoroutine(ActivateDamage(0.2f));
             playerController.playerRb.gravityScale = 9f;
             StartCoroutine(ResetGravity());
         }
@@ -125,6 +138,14 @@ public class CombatScript : MonoBehaviour
                 if (obj.CompareTag("Enemy"))
                 {
                     obj.transform.GetComponent<Enemy>().TakesDmg(damage);
+                    if (isInAir)
+                    {
+                        obj.transform.GetComponent<Enemy>().JumpAtack();
+                        isInAir = false;
+                    }
+
+
+
                 }
             }
         }
@@ -135,6 +156,11 @@ public class CombatScript : MonoBehaviour
                 if (obj.CompareTag("Enemy"))
                 {
                     obj.transform.GetComponent<Enemy>().TakesDmg(damage);
+                    if (isInAir)
+                    {
+                        obj.transform.GetComponent<Enemy>().JumpAtack();
+                        isInAir = false;
+                    }
                 }
             }
         }
@@ -144,6 +170,18 @@ public class CombatScript : MonoBehaviour
         yield return new WaitForSeconds(delay);
         CollisionImpact();
     }
+
+    public IEnumerator JumpAtack(float delay)
+    {
+        isInAir = true;
+        yield return new WaitForSeconds(delay);
+
+        // Aplicar fuerza de salto al jugador
+        playerController.playerRb.AddForce(new Vector2(0f, playerController.JumpSpeed), ForceMode2D.Impulse);
+        isInAir = false;
+
+    }
+
 
 
 }
