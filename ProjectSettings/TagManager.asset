@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Enemy
   - Hitbox
+  - gun
   layers:
   - Default
   - TransparentFX
@@ -48,6 +49,9 @@ TagManager:
     locked: 0
   - name: Default
     uniqueID: 0
+    locked: 0
+  - name: b1
+    uniqueID: 3315065027
     locked: 0
   - name: before
     uniqueID: 403258049

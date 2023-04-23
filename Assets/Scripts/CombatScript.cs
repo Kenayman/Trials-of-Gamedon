@@ -72,15 +72,28 @@ public class CombatScript : MonoBehaviour
     {
 
         damage = 2;
-        if (currentAtack == 0)
+        if (currentAtack == 0 && playerController.IsGrounded())
         {
             animator.SetTrigger("Atack");
             animator.SetInteger("counter", currentAtack);
             currentAtack++;
         }
-        else if (currentAtack == 1)
+        else if (currentAtack == 1 && playerController.IsGrounded())
         {
             animator.SetTrigger("Atack");
+            animator.SetInteger("counter", currentAtack);
+            currentAtack = 0;
+        }
+
+        if (currentAtack == 0 && !playerController.IsGrounded())
+        {
+            animator.SetTrigger("AirAtack");
+            animator.SetInteger("counter", currentAtack);
+            currentAtack++;
+        }
+        else if (currentAtack == 1 && !playerController.IsGrounded())
+        {
+            animator.SetTrigger("AirAtack");
             animator.SetInteger("counter", currentAtack);
             currentAtack = 0;
         }

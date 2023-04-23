@@ -10,6 +10,7 @@ public class PlayerController : MonoBehaviour
     private BoxCollider2D coll;
     private float direction;
     private PlayerDash playerDash;
+    private SpecialAttack sp;
     public bool canMove = true;
 
    
@@ -33,12 +34,13 @@ public class PlayerController : MonoBehaviour
         sprite = GetComponent<SpriteRenderer>();
         coll = GetComponent<BoxCollider2D>();
         playerDash = GetComponent<PlayerDash>();
+        sp = GetComponent<SpecialAttack>();
     }
 
     // Update is called once per frame
     void Update()
     {
-        if(!playerDash.IsDashing && canMove)
+        if(!playerDash.IsDashing && canMove && !sp.IsCharging)
         {
             Jump();
         }
@@ -47,10 +49,11 @@ public class PlayerController : MonoBehaviour
 
     private void FixedUpdate()
     {
-        if(!playerDash.IsDashing && canMove)
+        if(!playerDash.IsDashing && canMove && !sp.IsCharging)
         {
             Move();
         }
+
 
     }
 
@@ -100,7 +103,7 @@ public class PlayerController : MonoBehaviour
         {
             state = MovementState.jumping;
         }
-        if (playerRb.velocity.y < -2f)
+        if (playerRb.velocity.y < -3f)
         {
             state = MovementState.falling;
         }

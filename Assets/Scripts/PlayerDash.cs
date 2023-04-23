@@ -13,6 +13,8 @@ public class PlayerDash : MonoBehaviour
     [SerializeField] private float dashTime =0.2f;
     [SerializeField] private float dashSpeed = 20;
     [SerializeField] private float timeCanDash;
+    [SerializeField] private TrailRenderer trailRenderer;
+
 
     private bool isDashing;
     private bool canDash = true;
@@ -43,16 +45,16 @@ public class PlayerDash : MonoBehaviour
         canDash = false;
         rb.gravityScale = 0f;
         rb.velocity = new Vector2(dashSpeed * player.Direction, rb.velocity.y);
+        trailRenderer.emitting = true;
 
         yield return new WaitForSeconds(dashTime);
 
         isDashing = false;
         rb.gravityScale = baseGravity;
+        trailRenderer.emitting = false;
 
         yield return new WaitForSeconds(timeCanDash);
         canDash = true;
-
-
-
     }
+
 }
