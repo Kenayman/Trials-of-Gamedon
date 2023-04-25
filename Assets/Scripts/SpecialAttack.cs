@@ -48,7 +48,7 @@ public class SpecialAttack : MonoBehaviour
             {
                 animator.SetBool("IsCharging", false);
                 animator.SetTrigger("Special");
-                LaunchProjectile(currentChargeTime);
+                LaunchProjectile();
                 currentChargeTime = 0f;
                 canShoot = false;
             }
@@ -75,20 +75,20 @@ public class SpecialAttack : MonoBehaviour
         }
     }
     
-    private void LaunchProjectile(float chargeTime)
+    private void LaunchProjectile()
     {
         if (facingDirection > 0)
         {
             GameObject projectile = Instantiate(projectilePrefab, spawnPoint.position, Quaternion.identity);
             Rigidbody2D projectileRb = projectile.GetComponent<Rigidbody2D>();
-            projectileRb.velocity = new Vector2(projectileSpeed * chargeTime, 0f);
+            projectileRb.velocity = new Vector2(projectileSpeed * 2, 0f);
             Destroy(projectile, projectileLifetime);
         }
         else if (facingDirection < 0)
         {
             GameObject projectile = Instantiate(projectilePrefab, spawnPoint2.position, Quaternion.identity);
             Rigidbody2D projectileRb = projectile.GetComponent<Rigidbody2D>();
-            projectileRb.velocity = new Vector2(-projectileSpeed * chargeTime, 0f);
+            projectileRb.velocity = new Vector2(-projectileSpeed *2 , 0f);
             Destroy(projectile, projectileLifetime);
         }
     }

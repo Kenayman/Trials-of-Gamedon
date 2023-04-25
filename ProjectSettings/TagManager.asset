@@ -7,6 +7,7 @@ TagManager:
   - Enemy
   - Hitbox
   - gun
+  - FinalPoint
   layers:
   - Default
   - TransparentFX
@@ -50,15 +51,15 @@ TagManager:
   - name: Default
     uniqueID: 0
     locked: 0
-  - name: b1
+  - name: Before
     uniqueID: 3315065027
     locked: 0
-  - name: before
+  - name: Player
     uniqueID: 403258049
     locked: 0
-  - name: ground
+  - name: After
     uniqueID: 939757815
     locked: 0
-  - name: Player
+  - name: Ground
     uniqueID: 1029613425
     locked: 0

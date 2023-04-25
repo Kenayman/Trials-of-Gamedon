@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class EnemyAtack : MonoBehaviour
 {
-    [SerializeField] private Transform player;
+    private GameObject playerObj;
     [SerializeField] private float distance;
 
     public Vector3 initialPoint;
@@ -17,11 +17,13 @@ public class EnemyAtack : MonoBehaviour
         animator = GetComponent<Animator>();
         initialPoint = transform.position;
         spriteRenderer = GetComponent<SpriteRenderer>();
+        playerObj = GameObject.FindGameObjectWithTag("Player");
+        
     }
 
     private void Update()
     {
-        distance = Vector2.Distance(transform.position, player.position);
+        distance = Vector2.Distance(transform.position, playerObj.transform.position);
         animator.SetFloat("Distance", distance);
     }
 
