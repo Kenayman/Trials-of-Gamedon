@@ -1,12 +1,12 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using static UnityEngine.Rendering.DebugUI;
 
 public class SpecialAttack : MonoBehaviour
 {
     [SerializeField] private GameObject projectilePrefab;
-    [SerializeField] private Transform spawnPoint;
-    [SerializeField] private Transform spawnPoint2;
+    [SerializeField] private Transform Hitbox;
     [SerializeField] private float projectileSpeed;
     [SerializeField] private float projectileLifetime;
     [SerializeField] private float chargeTime;
@@ -79,14 +79,14 @@ public class SpecialAttack : MonoBehaviour
     {
         if (facingDirection > 0)
         {
-            GameObject projectile = Instantiate(projectilePrefab, spawnPoint.position, Quaternion.identity);
+            GameObject projectile = Instantiate(projectilePrefab, Hitbox.position, Quaternion.identity);
             Rigidbody2D projectileRb = projectile.GetComponent<Rigidbody2D>();
             projectileRb.velocity = new Vector2(projectileSpeed * 2, 0f);
             Destroy(projectile, projectileLifetime);
         }
         else if (facingDirection < 0)
         {
-            GameObject projectile = Instantiate(projectilePrefab, spawnPoint2.position, Quaternion.identity);
+            GameObject projectile = Instantiate(projectilePrefab, Hitbox.position, Quaternion.identity);
             Rigidbody2D projectileRb = projectile.GetComponent<Rigidbody2D>();
             projectileRb.velocity = new Vector2(-projectileSpeed *2 , 0f);
             Destroy(projectile, projectileLifetime);

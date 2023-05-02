@@ -9,32 +9,34 @@ public class SpawnManager : MonoBehaviour
     [SerializeField] private GameObject[] enemyPrefab;
     [SerializeField] private int numEnemiesToSpawn = 5;
     [SerializeField] private float spawnInterval = 1f;
+    [SerializeField] public bool isPlayerAlive = true;
+
 
     private bool hasSpawnedEnemies = false;
+    private int numEnemiesSpawned = 0;
 
 
     private void Start()
     {
-        if (!hasSpawnedEnemies)
+        if (!hasSpawnedEnemies )
         {
-            SpawnEnemies();
+            StartCoroutine(SpawnEnemiesOverTime());
         }
     }
 
-
-    private void SpawnEnemies()
+    private IEnumerator SpawnEnemiesOverTime()
     {
-        for (int i = 0; i < numEnemiesToSpawn / 2; i++)
+        hasSpawnedEnemies = true;
+
+        while (numEnemiesSpawned < numEnemiesToSpawn)
         {
             int enemyIndex = Random.Range(0, enemyPrefab.Length);
-
             Instantiate(enemyPrefab[enemyIndex], spawnTransform1.position, enemyPrefab[enemyIndex].transform.rotation);
             Instantiate(enemyPrefab[enemyIndex], spawnTransform2.position, enemyPrefab[enemyIndex].transform.rotation);
+            numEnemiesSpawned++;
 
-            
+            yield return new WaitForSeconds(spawnInterval);
         }
-
-        hasSpawnedEnemies = true;
     }
 
 }

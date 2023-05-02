@@ -1,11 +1,11 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using static UnityEngine.Rendering.DebugUI;
 
 public class CombatScript : MonoBehaviour
 {
-    [SerializeField] public Transform combatController;
-    [SerializeField] public Transform combatController2;
+    [SerializeField] public Transform Hitbox;
     [SerializeField] private float punchRatio;
     [SerializeField] private float damage;
     [SerializeField] private float speedAtack;
@@ -141,11 +141,10 @@ public class CombatScript : MonoBehaviour
 
     private void CollisionImpact()
     {
-        Collider2D[] objects = Physics2D.OverlapCircleAll(combatController.position, punchRatio);
-        Collider2D[] objects2 = Physics2D.OverlapCircleAll(combatController2.position, punchRatio);
+        Collider2D[] objects = Physics2D.OverlapCircleAll(Hitbox.position, punchRatio);
+        
 
-        if (facingDirection == 1)
-        {
+
             foreach (Collider2D obj in objects)
             {
                 if (obj.CompareTag("Enemy"))
@@ -161,22 +160,8 @@ public class CombatScript : MonoBehaviour
 
                 }
             }
-        }
-        if (facingDirection == -1)
-        {
-            foreach (Collider2D obj in objects2)
-            {
-                if (obj.CompareTag("Enemy"))
-                {
-                    obj.transform.GetComponent<Enemy>().TakesDmg(damage);
-                    if (isInAir)
-                    {
-                        obj.transform.GetComponent<Enemy>().JumpAtack();
-                        isInAir = false;
-                    }
-                }
-            }
-        }
+        
+
     }
     private IEnumerator ActivateDamage(float delay)
     {
@@ -194,7 +179,11 @@ public class CombatScript : MonoBehaviour
         isInAir = false;
 
     }
-
+    private void OnDrawGizmos()
+    {
+        Gizmos.color = Color.red;
+        Gizmos.DrawWireSphere(Hitbox.position, punchRatio);
+    }
 
 
 }

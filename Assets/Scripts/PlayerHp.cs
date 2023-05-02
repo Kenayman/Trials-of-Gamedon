@@ -7,13 +7,15 @@ public class PlayerHp : MonoBehaviour
 {
     [SerializeField] private int heartNumber;
     [SerializeField] private Image[] hearts;
-    [SerializeField] private float Life;
+    [SerializeField] public float Life;
     [SerializeField] private float lostControl;
 
     private PlayerController controller;
     private Animator animator;
     private PlayerDash dash;
     private CombatScript combatScript;
+    private SpecialAttack specialAttack;
+    private SpawnManager spawnManager;
 
     public Sprite fullHeart;
     public Sprite Emptyheart;
@@ -26,6 +28,7 @@ public class PlayerHp : MonoBehaviour
         animator = GetComponent<Animator>();
         dash = GetComponent<PlayerDash>();
         combatScript = GetComponent<CombatScript>();
+        specialAttack = GetComponent<SpecialAttack>();
     }
     private void Update()
     {
@@ -33,7 +36,6 @@ public class PlayerHp : MonoBehaviour
         
     }
 
-    // Update is called once per frame
     public void TakesDamage(float dmg)
     {
         Life -= dmg;
@@ -46,7 +48,13 @@ public class PlayerHp : MonoBehaviour
         controller.enabled = false;
         dash.enabled = false;
         combatScript.enabled = false;
+        specialAttack.enabled = false;
 
+        GameObject spawnManagerObj = GameObject.Find("SpawnManager");
+        if (spawnManagerObj != null)
+        {
+            spawnManagerObj.SetActive(false);
+        }
         // Ignorar la colisión entre las capas 6 y 7 (jugador y enemigo)
         Physics2D.IgnoreLayerCollision(6, 7, true);
 

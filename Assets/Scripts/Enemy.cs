@@ -6,21 +6,37 @@ public class Enemy : MonoBehaviour
 {
     [SerializeField] private float Life;
     [SerializeField] private float jumpSpeed;
+
     private CombatScript combatScript;
     private Animator anim;
     private float jumpDmg = 2;
     public Rigidbody2D rb;
     private SpecialAttack Sa;
+    private bool isDead;
     public float JumpSpeed => jumpSpeed;
+    public bool IsDead => isDead;
+    public Transform player;
+    private  bool lookingR;
+    private PlayerHp playerHp;
 
     void Start()
     {
+        isDead = false;
         anim = GetComponent<Animator>();
         combatScript = GetComponent<CombatScript>();
         rb = GetComponent<Rigidbody2D>();
         Sa = GetComponent<SpecialAttack>();
+        player = GameObject.FindGameObjectWithTag("Player").GetComponent<Transform>();
+        playerHp = player.GetComponent<PlayerHp>();
     }
 
+    private void Update()
+    {
+        if(playerHp.Life <= 0)
+        {
+            Death();
+        }
+    }
     public void TakesDmg(float dmgTaker)
     {
         Life -= dmgTaker;
@@ -30,13 +46,15 @@ public class Enemy : MonoBehaviour
             Death();
         }
 
+
         anim.SetTrigger("damage");
     }
 
     private void Death()
+
     {
         anim.SetTrigger("death");
-        Destroy(gameObject, 1f);
+        Destroy(gameObject, 0.6f);
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
@@ -59,5 +77,15 @@ public class Enemy : MonoBehaviour
     {
         rb.AddForce(new Vector2(0, jumpSpeed), ForceMode2D.Impulse);
     }
+
+    public void Look()
+    {
+        if ((player.position.x > transform.position.x && !lookingR) || (player.position.x < transform.position.x && lookingR))
+        {
+            lookingR = !lookingR;
+            transform.eulerAngles = new Vector3(0, transform.eulerAngles.y + 180, 0);
+        }
+    }
+
 }
 

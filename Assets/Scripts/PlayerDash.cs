@@ -35,6 +35,7 @@ public class PlayerDash : MonoBehaviour
         if(Input.GetKeyDown(KeyCode.LeftShift) && canDash) 
         {
             StartCoroutine(Dash());
+            StartCoroutine(NoCollision());
             animator.SetTrigger("Dash");
         }
     }
@@ -55,6 +56,14 @@ public class PlayerDash : MonoBehaviour
 
         yield return new WaitForSeconds(timeCanDash);
         canDash = true;
+    }
+
+    IEnumerator NoCollision()
+    {
+        Physics2D.IgnoreLayerCollision(6, 7, true);
+        yield return new WaitForSeconds(0.5f);
+        Physics2D.IgnoreLayerCollision(6, 7, false);
+
     }
 
 }
