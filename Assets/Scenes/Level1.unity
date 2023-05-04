@@ -220,11 +220,11 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 123168924}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 5.8779, y: -22.3, z: 0}
-  m_LocalScale: {x: 9.995393, y: 10.154137, z: 1}
+  m_LocalRotation: {x: -0, y: -0, z: 0.7071068, w: 0.7071068}
+  m_LocalPosition: {x: 5.00668, y: 6.6094513, z: -0.5}
+  m_LocalScale: {x: 1.0440301, y: 1.2805669, z: 1}
   m_Children: []
-  m_Father: {fileID: 1905379059}
+  m_Father: {fileID: 1544580273}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &123168926
@@ -396,14 +396,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b0571d5f8ff93044abb65af5fdb201cb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  spawnTransform1: {fileID: 706352706}
-  spawnTransform2: {fileID: 603723277}
-  enemyPrefab:
-  - {fileID: 1980522777589224018, guid: ec98f2f01ac08764ba28ac8ff1539409, type: 3}
-  - {fileID: 2794093274489419491, guid: db2a97b3b29133a4c9b047825d7ac55a, type: 3}
-  numEnemiesToSpawn: 5
-  spawnInterval: 3
+  waves: []
   isPlayerAlive: 1
+  SpawnPoint: []
 --- !u!43 &152552957
 Mesh:
   m_ObjectHideFlags: 0
@@ -675,7 +670,7 @@ Transform:
   m_GameObject: {fileID: 318150362}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -5, y: 4.8, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 1.2, y: 1.2, z: 1}
   m_Children:
   - {fileID: 812483485}
   - {fileID: 1346375155}
@@ -694,7 +689,7 @@ Rigidbody2D:
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
-  m_Mass: 2.44
+  m_Mass: 2.33
   m_LinearDrag: 0
   m_AngularDrag: 0.05
   m_GravityScale: 4.23
@@ -748,7 +743,7 @@ MonoBehaviour:
   jumpable:
     serializedVersion: 2
     m_Bits: 8
-  bounceSpeed: 11.61
+  bounceSpeed: 19.05
   bounceForce: {x: 10, y: 10}
   movementSmoothing: 0.3
 --- !u!114 &318150369
@@ -764,7 +759,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Hitbox: {fileID: 812483485}
-  punchRatio: 2
+  punchRatio: 3
   damage: 1
   speedAtack: 0.49
   speedNextAtack: 0
@@ -782,7 +777,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   dashTime: 0.1
   dashSpeed: 70
-  timeCanDash: 0.4
+  timeCanDash: 1.5
   trailRenderer: {fileID: 318150372}
 --- !u!114 &318150371
 MonoBehaviour:
@@ -935,7 +930,7 @@ MonoBehaviour:
   projectilePrefab: {fileID: 8046429594517196263, guid: edf843de4e8651f478d58d8c74f25b17, type: 3}
   Hitbox: {fileID: 812483485}
   projectileSpeed: 20
-  projectileLifetime: 0.2
+  projectileLifetime: 0.41
   chargeTime: 0.1
   maxChargeTime: 0.1
   specialAttackKey: 102
@@ -1749,7 +1744,7 @@ Transform:
   m_Children:
   - {fileID: 1251583224}
   m_Father: {fileID: 1905379059}
-  m_RootOrder: 4
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &706352705
 GameObject:
@@ -1807,7 +1802,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 812483484}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 1.36, y: 0.26, z: 0}
+  m_LocalPosition: {x: 2.26, y: 0.26, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 318150365}
@@ -13589,7 +13584,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1905379059}
-  m_RootOrder: 5
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1251583223
 GameObject:
@@ -14472,6 +14467,7 @@ Transform:
   m_Children:
   - {fileID: 1741407944}
   - {fileID: 583274394}
+  - {fileID: 123168925}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: -90}
@@ -14780,7 +14776,7 @@ Transform:
   m_Children:
   - {fileID: 1728287106}
   m_Father: {fileID: 1905379059}
-  m_RootOrder: 3
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &1771847264
 SpriteRenderer:
@@ -15107,7 +15103,6 @@ Transform:
   m_Children:
   - {fileID: 1046024769}
   - {fileID: 1064799771}
-  - {fileID: 123168925}
   - {fileID: 1771847263}
   - {fileID: 690390542}
   - {fileID: 1139821263}
@@ -15143,14 +15138,29 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b0571d5f8ff93044abb65af5fdb201cb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  spawnTransform1: {fileID: 566377077}
-  spawnTransform2: {fileID: 401935841}
-  enemyPrefab:
-  - {fileID: 7006199441563083308, guid: ec98f2f01ac08764ba28ac8ff1539409, type: 3}
-  - {fileID: 1961848499648696502, guid: db2a97b3b29133a4c9b047825d7ac55a, type: 3}
-  numEnemiesToSpawn: 20
-  spawnInterval: 4
+  waves:
+  - waveName: 1
+    noOfEnemies: 1
+    typeOfEnemies:
+    - {fileID: 7006199441563083308, guid: ec98f2f01ac08764ba28ac8ff1539409, type: 3}
+    spawnInter: 2
+  - waveName: 2
+    noOfEnemies: 10
+    typeOfEnemies:
+    - {fileID: 1961848499648696502, guid: db2a97b3b29133a4c9b047825d7ac55a, type: 3}
+    - {fileID: 7006199441563083308, guid: ec98f2f01ac08764ba28ac8ff1539409, type: 3}
+    spawnInter: 1
+  - waveName: 3
+    noOfEnemies: 15
+    typeOfEnemies:
+    - {fileID: 1961848499648696502, guid: db2a97b3b29133a4c9b047825d7ac55a, type: 3}
+    - {fileID: 7006199441563083308, guid: ec98f2f01ac08764ba28ac8ff1539409, type: 3}
+    - {fileID: 0}
+    spawnInter: 1
   isPlayerAlive: 1
+  SpawnPoint:
+  - {fileID: 566377077}
+  - {fileID: 401935841}
 --- !u!4 &1932877932
 Transform:
   m_ObjectHideFlags: 0

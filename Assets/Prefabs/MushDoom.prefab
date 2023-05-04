@@ -17,7 +17,7 @@ GameObject:
   - component: {fileID: 1961848499648696488}
   - component: {fileID: 1961848499648696489}
   m_Layer: 7
-  m_Name: Mushroom
+  m_Name: MushDoom
   m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -148,7 +148,7 @@ Rigidbody2D:
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
-  m_Mass: 1
+  m_Mass: 40
   m_LinearDrag: 0
   m_AngularDrag: 0.05
   m_GravityScale: 1
@@ -169,7 +169,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f5b186542d8ca4048b4ce9e65e468748, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Life: 15
+  Life: 8
   jumpSpeed: 1
   rb: {fileID: 1961848499648696490}
   player: {fileID: 0}

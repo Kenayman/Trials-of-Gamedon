@@ -1,42 +1,59 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+[System.Serializable]
 
+public class Wave
+{
+    public string waveName;
+    public int noOfEnemies;
+    public GameObject[] typeOfEnemies;
+    public float spawnInter;
+}
 public class SpawnManager : MonoBehaviour
 {
-    [SerializeField] private Transform spawnTransform1;
-    [SerializeField] private Transform spawnTransform2;
-    [SerializeField] private GameObject[] enemyPrefab;
-    [SerializeField] private int numEnemiesToSpawn = 5;
-    [SerializeField] private float spawnInterval = 1f;
-    [SerializeField] public bool isPlayerAlive = true;
+    [SerializeField] Wave[] waves;
+    [SerializeField] public bool isPlayerAlive;
+    public Transform[] SpawnPoint;
 
+    private Wave currentWave;
+    private int currentWaveInt;
+    private bool canSpawn = true;
+    private float nextSpawnTime;
 
-    private bool hasSpawnedEnemies = false;
-    private int numEnemiesSpawned = 0;
-
-
-    private void Start()
+    private void Update()
     {
-        if (!hasSpawnedEnemies )
-        {
-            StartCoroutine(SpawnEnemiesOverTime());
+        currentWave= waves[currentWaveInt];
+        SpawnWave();
+        GameObject[] totalEnemies = GameObject.FindGameObjectsWithTag("Enemy");
+        if(totalEnemies.Length == 0 && !canSpawn && currentWaveInt+1 != waves.Length ){
+
+            SpawnNextWave();
         }
     }
 
-    private IEnumerator SpawnEnemiesOverTime()
+    private void SpawnWave()
     {
-        hasSpawnedEnemies = true;
-
-        while (numEnemiesSpawned < numEnemiesToSpawn)
+        if (canSpawn && nextSpawnTime< Time.time)
         {
-            int enemyIndex = Random.Range(0, enemyPrefab.Length);
-            Instantiate(enemyPrefab[enemyIndex], spawnTransform1.position, enemyPrefab[enemyIndex].transform.rotation);
-            Instantiate(enemyPrefab[enemyIndex], spawnTransform2.position, enemyPrefab[enemyIndex].transform.rotation);
-            numEnemiesSpawned++;
-
-            yield return new WaitForSeconds(spawnInterval);
+            GameObject randomEnemy = currentWave.typeOfEnemies[Random.Range(0, currentWave.typeOfEnemies.Length)];
+            Transform randomPoint = SpawnPoint[Random.Range(0, SpawnPoint.Length)];
+            Instantiate(randomEnemy, randomPoint.position, Quaternion.identity);
+            currentWave.noOfEnemies--;
+            nextSpawnTime = Time.time + currentWave.spawnInter;
+            if(currentWave.noOfEnemies == 0)
+            {
+                canSpawn = false;
+            }
         }
+
+
+    }
+
+    void SpawnNextWave()
+    {
+        currentWaveInt++;
+        canSpawn = true;
     }
 
 }
