@@ -13,6 +13,7 @@ public class EnemyAtack : MonoBehaviour
     private PlayerHp playerHp;
     private SpawnManager spawnManager;
     public Vector3 initialPoint;
+    private Enemy enemy;
     #endregion
 
     #region Attack
@@ -30,6 +31,7 @@ public class EnemyAtack : MonoBehaviour
         playerHp= playerObj.GetComponent<PlayerHp>(); 
         initialPoint = transform.position;
         spawnManager = GetComponent<SpawnManager>();
+        enemy = GetComponent<Enemy>();
     }
 
     private void Update()
@@ -58,6 +60,27 @@ public class EnemyAtack : MonoBehaviour
         else if (transform.position.x > objective.x)
         {
             transform.localScale = new Vector3(Mathf.Abs(transform.localScale.x), transform.localScale.y, transform.localScale.z);
+        }
+    }
+    private void BlobbyAttack()
+    {
+        
+        DealExplosionDamage(5f, 1f); // deal explosion damage to nearby enemies
+    }
+
+    public void DealExplosionDamage(float explosionRange, float explosionDamage)
+    {
+        Collider2D[] nearbyEnemies = Physics2D.OverlapCircleAll(transform.position, explosionRange);
+        foreach (Collider2D enemyCollider in nearbyEnemies)
+        {
+            if (enemyCollider.CompareTag("Enemy"))
+            {
+                Enemy enemy = enemyCollider.GetComponent<Enemy>();
+                if (enemy != null && !enemy.IsDead)
+                {
+                    enemy.TakesDmg(explosionDamage);
+                }
+            }
         }
     }
 
@@ -98,6 +121,7 @@ public class EnemyAtack : MonoBehaviour
             }
         }
     }
+
 
     private void OnDrawGizmos()
     {

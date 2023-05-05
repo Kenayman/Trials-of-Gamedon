@@ -6,6 +6,7 @@ public class Enemy : MonoBehaviour
 {
     [SerializeField] private float Life;
     [SerializeField] private float jumpSpeed;
+    [SerializeField] private float timeDeath;
 
     private CombatScript combatScript;
     private Animator anim;
@@ -54,7 +55,7 @@ public class Enemy : MonoBehaviour
 
     {
         anim.SetTrigger("death");
-        Destroy(gameObject, 0.6f);
+        Destroy(gameObject, timeDeath);
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
@@ -70,6 +71,9 @@ public class Enemy : MonoBehaviour
             }
         }
     }
+
+
+
 
 
 

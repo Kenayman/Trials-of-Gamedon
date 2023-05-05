@@ -171,7 +171,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Life: 5
   jumpSpeed: 10.77
+  timeDeath: 0.6
   rb: {fileID: 0}
+  player: {fileID: 0}
 --- !u!114 &7006199441563083298
 MonoBehaviour:
   m_ObjectHideFlags: 0
