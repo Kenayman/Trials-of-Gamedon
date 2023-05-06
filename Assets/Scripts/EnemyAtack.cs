@@ -38,16 +38,6 @@ public class EnemyAtack : MonoBehaviour
     {
         distance = Vector2.Distance(transform.position, playerObj.transform.position);
         animator.SetFloat("Distance", distance);
-
-        if (animator.GetCurrentAnimatorStateInfo(0).IsName("Attack"))
-        {
-            // Si la animación de ataque está activa, establecer la variable canAttackHands en verdadero
-            canAttack = true;
-        }
-        else
-        {
-            canAttack = false;
-        }
     }
 
 
@@ -117,7 +107,7 @@ public class EnemyAtack : MonoBehaviour
         {
             if(collision.CompareTag("Player")) 
             {
-                playerObj.GetComponent<PlayerHp>().TakesDamage(dmgDealt, attackDirection);
+                collision.GetComponent<PlayerHp>().TakesDamage(dmgDealt, attackDirection);
             }
         }
     }

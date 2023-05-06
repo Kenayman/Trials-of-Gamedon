@@ -44,6 +44,8 @@ public class SpawnManager : MonoBehaviour
             else
             {
                 Debug.Log("Time to Rest");
+                animator.SetTrigger("Next");
+
             }
 
 

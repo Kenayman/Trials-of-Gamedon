@@ -5,9 +5,9 @@ using UnityEngine.UI;
 
 public class PlayerHp : MonoBehaviour
 {
-    [SerializeField] private int heartNumber;
+    [SerializeField] public int heartNumber = 4;
     [SerializeField] private Image[] hearts;
-    [SerializeField] public float Life;
+    [SerializeField] public float Life=4;
     [SerializeField] private float lostControl;
 
     private PlayerController controller;
@@ -16,6 +16,8 @@ public class PlayerHp : MonoBehaviour
     private CombatScript combatScript;
     private SpecialAttack specialAttack;
     private SpawnManager spawnManager;
+    private float totalLife;
+    private int totalHeart;
 
     public Sprite fullHeart;
     public Sprite Emptyheart;
@@ -24,6 +26,8 @@ public class PlayerHp : MonoBehaviour
     // Start is called before the first frame update
     void Awake()
     {
+        totalHeart = heartNumber;
+        totalLife = Life;
         controller = GetComponent<PlayerController>();
         animator = GetComponent<Animator>();
         dash = GetComponent<PlayerDash>();
@@ -125,5 +129,15 @@ public class PlayerHp : MonoBehaviour
         controller.canMove = false;
         yield return new WaitForSeconds(lostControl);
         controller.canMove = true;
+    }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.CompareTag("heart"))
+        {
+            Life = totalLife +1;
+            heartNumber = totalHeart+1;
+        }
+
     }
 }

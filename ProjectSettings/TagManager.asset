@@ -8,6 +8,7 @@ TagManager:
   - Hitbox
   - gun
   - FinalPoint
+  - heart
   layers:
   - Default
   - TransparentFX
