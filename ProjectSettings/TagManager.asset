@@ -9,6 +9,8 @@ TagManager:
   - gun
   - FinalPoint
   - heart
+  - Boss
+  - GameManager
   layers:
   - Default
   - TransparentFX

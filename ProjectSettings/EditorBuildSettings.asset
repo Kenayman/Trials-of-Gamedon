@@ -11,4 +11,10 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/RestRoom.unity
     guid: 52021dc70ae6e9847961a3a9fb3db03e
+  - enabled: 1
+    path: Assets/Scenes/Boss.unity
+    guid: 10dfe9c7eec1419468dd44aad6f1a879
+  - enabled: 1
+    path: Assets/Scenes/RestLevel2.unity
+    guid: 8ec7072dde37bad4b9ea2d698924221f
   m_configObjects: {}

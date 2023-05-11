@@ -136,7 +136,7 @@ public class PlayerHp : MonoBehaviour
         if (collision.CompareTag("heart"))
         {
             Life = totalLife +1;
-            heartNumber = totalHeart+1;
+            heartNumber = totalHeart + 1;
         }
 
     }

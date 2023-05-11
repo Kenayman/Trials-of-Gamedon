@@ -7,6 +7,7 @@ public class Projectile : MonoBehaviour
     [SerializeField] private float punchRatio;
     [SerializeField] private float Damage;
     private Dictionary<Enemy, bool> hitEnemies = new Dictionary<Enemy, bool>();
+    private Dictionary<BossScript, bool> hitBoss = new Dictionary<BossScript, bool>();
 
     void Awake()
     {
@@ -30,6 +31,15 @@ public class Projectile : MonoBehaviour
                 {
                     hitEnemies[enemy] = true;
                     enemy.TakesDmg(Damage);
+                }
+            }
+            if (obj.CompareTag("Boss"))
+            {
+                BossScript boss = obj.transform.GetComponent<BossScript>();
+                if (boss != null && !hitBoss.ContainsKey(boss))
+                {
+                    hitBoss[boss] = true;
+                    boss.TakesDmg(Damage);
                 }
             }
         }

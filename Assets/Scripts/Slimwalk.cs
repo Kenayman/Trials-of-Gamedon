@@ -24,7 +24,7 @@ public class Slimwalk : StateMachineBehaviour
     // OnStateUpdate is called on each Update frame between OnStateEnter and OnStateExit callbacks
     override public void OnStateUpdate(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
-
+            
             animator.transform.position = Vector2.MoveTowards(animator.transform.position, player.position, movementSpeed * Time.deltaTime);
             slime.Rotate(player.position);
             movementTime -= Time.deltaTime;
@@ -39,6 +39,18 @@ public class Slimwalk : StateMachineBehaviour
     override public void OnStateExit(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
 
+    }
+
+    public void Rotate(Transform transform, Vector3 objective)
+    {
+        if (transform.position.x < objective.x)
+        {
+            transform.localScale = new Vector3(Mathf.Abs(transform.localScale.x), transform.localScale.y, transform.localScale.z);
+        }
+        else if (transform.position.x > objective.x)
+        {
+            transform.localScale = new Vector3(-Mathf.Abs(transform.localScale.x), transform.localScale.y, transform.localScale.z);
+        }
     }
 
     // OnStateMove is called right after Animator.OnAnimatorMove()

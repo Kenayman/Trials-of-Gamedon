@@ -16,6 +16,7 @@ public class CombatScript : MonoBehaviour
     private Animator animator;
     private PlayerController playerController;
     private Enemy enemy;
+    private BossScript bossScript;
 
 
 
@@ -28,6 +29,7 @@ public class CombatScript : MonoBehaviour
         animator = GetComponent<Animator>();
         playerController = transform.GetComponent<PlayerController>();
         enemy = transform.GetComponent<Enemy>();
+        bossScript = GetComponent<BossScript>();
 
     }
 
@@ -142,25 +144,27 @@ public class CombatScript : MonoBehaviour
     private void CollisionImpact()
     {
         Collider2D[] objects = Physics2D.OverlapCircleAll(Hitbox.position, punchRatio);
-        
 
 
-            foreach (Collider2D obj in objects)
+
+        foreach (Collider2D obj in objects)
             {
                 if (obj.CompareTag("Enemy"))
                 {
                     obj.transform.GetComponent<Enemy>().TakesDmg(damage);
-                    if (isInAir)
+                if (isInAir)
                     {
                         obj.transform.GetComponent<Enemy>().JumpAtack();
                         isInAir = false;
                     }
-
-
-
                 }
+            if (obj.CompareTag("Boss"))
+            {
+
+                obj.transform.GetComponent<BossScript>().TakesDmg(damage);
             }
-        
+        }
+
 
     }
     private IEnumerator ActivateDamage(float delay)
