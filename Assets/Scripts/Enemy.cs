@@ -19,6 +19,7 @@ public class Enemy : MonoBehaviour
     public Transform player;
     private  bool lookingR;
     private PlayerHp playerHp;
+    [SerializeField]private int monsterPoints;
 
     void Start()
     {
@@ -55,6 +56,7 @@ public class Enemy : MonoBehaviour
 
     {
         anim.SetTrigger("death");
+        player.GetComponent<PlayerHp>().Die(monsterPoints);
         Destroy(gameObject, timeDeath);
     }
 
@@ -90,6 +92,5 @@ public class Enemy : MonoBehaviour
             transform.eulerAngles = new Vector3(0, transform.eulerAngles.y + 180, 0);
         }
     }
-
 }
 

@@ -26,6 +26,7 @@ public class BossScript : MonoBehaviour
     [SerializeField] private Transform Hitbox;
     [SerializeField] private float atkRange;
     [SerializeField] private float dmgDealt;
+    private int monsterPoints = 1000;
     #endregion
 
     //[SerializeField] private LifeBar lifeBar;
@@ -68,6 +69,7 @@ public class BossScript : MonoBehaviour
             GameObject audioManager = GameObject.Find("DeathSound");
             AudioSource audioSource = audioManager.GetComponent<AudioSource>();
             audioSource.Play();
+
         }
 
 
@@ -78,6 +80,7 @@ public class BossScript : MonoBehaviour
     private void Death()
 
     {
+        player.GetComponent<PlayerHp>().Die(monsterPoints);
         Destroy(gameObject);
     }
 

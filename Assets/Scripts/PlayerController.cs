@@ -16,6 +16,7 @@ public class PlayerController : MonoBehaviour
     public bool canMove = true;
 
 
+
     public float Direction => direction;
 
 
@@ -33,7 +34,6 @@ public class PlayerController : MonoBehaviour
     // Start is called before the first frame update
     private void Awake()
     {
-        DontDestroyOnLoad(gameObject);
         playerRb = GetComponent<Rigidbody2D>();
         animator = GetComponent<Animator>();
         sprite = GetComponent<SpriteRenderer>();

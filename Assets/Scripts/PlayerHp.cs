@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class PlayerHp : MonoBehaviour
@@ -18,10 +19,15 @@ public class PlayerHp : MonoBehaviour
     private SpawnManager spawnManager;
     private float totalLife;
     private int totalHeart;
-
+    public Text scoreText1;
+    public Text scoreText2;
+    public Text scoreText3;
+    
     public Sprite fullHeart;
     public Sprite Emptyheart;
     public bool hasDied = false;
+    private Enemy enemy;
+    private int score = 0;
 
     // Start is called before the first frame update
     void Awake()
@@ -33,11 +39,15 @@ public class PlayerHp : MonoBehaviour
         dash = GetComponent<PlayerDash>();
         combatScript = GetComponent<CombatScript>();
         specialAttack = GetComponent<SpecialAttack>();
+        enemy = GetComponent<Enemy>();
     }
     private void Update()
     {
         HealthUI();
-        
+        scoreText1.text = "Score: " + score.ToString();
+        scoreText2.text = "Score: " + score.ToString();
+        scoreText3.text = "Score: " + score.ToString();
+
     }
 
     public void TakesDamage(float dmg)
@@ -67,6 +77,8 @@ public class PlayerHp : MonoBehaviour
         animator.SetTrigger("death");
 
         hasDied = true;
+        StartCoroutine(DeathMenu());
+        Destroy(gameObject, 3f);
         
 
 
@@ -140,4 +152,21 @@ public class PlayerHp : MonoBehaviour
         }
 
     }
+
+
+    public void Die(int points)
+    {
+        score += points;
+        // Actualiza el puntaje en la interfaz de usuario
+    }
+
+
+
+    public IEnumerator DeathMenu()
+    {
+        yield return new WaitForSeconds(1f);
+        SceneManager.LoadScene(2);
+
+    }
+
 }

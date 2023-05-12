@@ -173,6 +173,7 @@ MonoBehaviour:
   timeDeath: 0.6
   rb: {fileID: 1961848499648696490}
   player: {fileID: 0}
+  monsterPoints: 15
 --- !u!114 &1961848499648696489
 MonoBehaviour:
   m_ObjectHideFlags: 0
