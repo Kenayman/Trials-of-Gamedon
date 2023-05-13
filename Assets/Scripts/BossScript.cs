@@ -1,16 +1,11 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
-using static UnityEditor.ShaderGraph.Internal.KeywordDependentCollection;
-using static UnityEngine.Rendering.DebugUI;
 
 public class BossScript : MonoBehaviour
 {
     private Animator animator;
     public Rigidbody2D rb;
     public Transform player;
-    private bool lookingR = true;
     private Animator gameControllerAnimator;
     [SerializeField] private float Life;
     [SerializeField] private Image healthBar;

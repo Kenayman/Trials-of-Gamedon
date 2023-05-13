@@ -10,7 +10,6 @@ public class Enemy : MonoBehaviour
 
     private CombatScript combatScript;
     private Animator anim;
-    private float jumpDmg = 2;
     public Rigidbody2D rb;
     private SpecialAttack Sa;
     private bool isDead;
