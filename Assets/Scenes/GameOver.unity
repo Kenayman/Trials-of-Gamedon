@@ -490,7 +490,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4048655745037793183, guid: 07a36b62ed607b94b883c86618926a70, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 0.0017738
+      value: 152
       objectReference: {fileID: 0}
     - target: {fileID: 4048655745037793183, guid: 07a36b62ed607b94b883c86618926a70, type: 3}
       propertyPath: m_AnchoredPosition.y
@@ -498,7 +498,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4349705909609211105, guid: 07a36b62ed607b94b883c86618926a70, type: 3}
       propertyPath: m_Text
-      value: SCOREBOARD
+      value: SCORES
       objectReference: {fileID: 0}
     - target: {fileID: 4349705909609211105, guid: 07a36b62ed607b94b883c86618926a70, type: 3}
       propertyPath: m_Color.b
