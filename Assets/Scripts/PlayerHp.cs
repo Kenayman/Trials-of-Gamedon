@@ -24,11 +24,12 @@ public class PlayerHp : MonoBehaviour
     public Text scoreText3;
     public bool canGivePoints = true;
 
+    public LeaderBoard leaderBoard;
     public Sprite fullHeart;
     public Sprite Emptyheart;
     public bool hasDied = false;
     private Enemy enemy;
-    private int score = 0;
+    int score = 0;
 
     // Start is called before the first frame update
     void Awake()
@@ -78,9 +79,10 @@ public class PlayerHp : MonoBehaviour
         animator.SetTrigger("death");
 
         hasDied = true;
+        StartCoroutine(leaderBoard.SumbitScoreRoutine(score));
         NoPoints();
         StartCoroutine(DeathMenu());
-        Destroy(gameObject, 3f);
+        Destroy(gameObject, 4f);
 
 
 

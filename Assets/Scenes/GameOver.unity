@@ -1836,6 +1836,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a6ea3e707fbdd0f41b6f7cf2c93b8822, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  canvas: {fileID: 0}
+  leader: {fileID: 0}
+  login: {fileID: 0}
 --- !u!114 &1300979302
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2369,7 +2372,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1599965535}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1300979301}
+        m_TargetAssemblyTypeName: MainMenu, Assembly-CSharp
+        m_MethodName: LeaderLog
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1599965535
 MonoBehaviour:
   m_ObjectHideFlags: 0

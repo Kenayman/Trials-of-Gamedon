@@ -1348,6 +1348,7 @@ Transform:
   - {fileID: 1827915129102057491}
   - {fileID: 1827915129933769104}
   - {fileID: 8836482276714844161}
+  - {fileID: 1517883903364681992}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -1577,6 +1578,8 @@ MonoBehaviour:
   scoreText1: {fileID: 117785688063775324}
   scoreText2: {fileID: 1800520726516265189}
   scoreText3: {fileID: 1975817445431295235}
+  canGivePoints: 1
+  leaderBoard: {fileID: 3861583072293289694}
   fullHeart: {fileID: 7078957633047559561, guid: 6d290ed0629b3c54394f8978e328635c, type: 3}
   Emptyheart: {fileID: 7584909091477175504, guid: 6d290ed0629b3c54394f8978e328635c, type: 3}
   hasDied: 0
@@ -2322,6 +2325,49 @@ MonoBehaviour:
     m_VerticalOverflow: 0
     m_LineSpacing: 1
   m_Text: 10
+--- !u!1 &5366363403946036842
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1517883903364681992}
+  - component: {fileID: 3861583072293289694}
+  m_Layer: 0
+  m_Name: LeaderBoard
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1517883903364681992
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5366363403946036842}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -3.3392859, y: -12.454545, z: 0}
+  m_LocalScale: {x: 0.8928572, y: 0.9090909, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1827915130198186813}
+  m_RootOrder: 4
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &3861583072293289694
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5366363403946036842}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5a9c1364889130d4b8f8ad04057d22f9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &5781877253629792761
 GameObject:
   m_ObjectHideFlags: 0

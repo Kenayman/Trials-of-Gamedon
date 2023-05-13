@@ -6,9 +6,18 @@ using UnityEngine.SceneManagement;
 public class MainMenu : MonoBehaviour
 {
     [SerializeField] private Canvas canvas;
+    [SerializeField] private Canvas leader;
+    [SerializeField] private Canvas login;
+
+    private void Awake()
+    {
+        login.enabled = false;
+
+    }
     private void Start()
     {
         canvas.enabled = false;
+        leader.enabled = false;
     }
 
     public void Play()
@@ -41,6 +50,17 @@ public class MainMenu : MonoBehaviour
     public void CreditsOut()
     {
         canvas.enabled = false;
+    }
+    public void LeaderLog()
+    {
+        SceneManager.LoadScene(7);
+
+    }
+
+
+    public void Login()
+    {
+        login.enabled = true;
     }
 
 }
