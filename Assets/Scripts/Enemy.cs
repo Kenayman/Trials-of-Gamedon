@@ -56,7 +56,11 @@ public class Enemy : MonoBehaviour
 
     {
         anim.SetTrigger("death");
-        player.GetComponent<PlayerHp>().Die(monsterPoints);
+        if (playerHp.canGivePoints==true)
+        {
+            player.GetComponent<PlayerHp>().Die(monsterPoints);
+
+        }
         Destroy(gameObject, timeDeath);
     }
 
@@ -92,5 +96,7 @@ public class Enemy : MonoBehaviour
             transform.eulerAngles = new Vector3(0, transform.eulerAngles.y + 180, 0);
         }
     }
+
+
 }
 

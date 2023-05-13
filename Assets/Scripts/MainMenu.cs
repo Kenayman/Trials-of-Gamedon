@@ -5,7 +5,13 @@ using UnityEngine.SceneManagement;
 
 public class MainMenu : MonoBehaviour
 {
-   public void Play()
+    [SerializeField] private Canvas canvas;
+    private void Start()
+    {
+        canvas.enabled = false;
+    }
+
+    public void Play()
     {
         SceneManager.LoadScene(1);
     }
@@ -25,6 +31,16 @@ public class MainMenu : MonoBehaviour
     {
         SceneManager.LoadScene(0);
 
+    }
+
+    public void CreditsLog() 
+    {
+        canvas.enabled = true;
+    }
+
+    public void CreditsOut()
+    {
+        canvas.enabled = false;
     }
 
 }

@@ -22,7 +22,8 @@ public class PlayerHp : MonoBehaviour
     public Text scoreText1;
     public Text scoreText2;
     public Text scoreText3;
-    
+    public bool canGivePoints = true;
+
     public Sprite fullHeart;
     public Sprite Emptyheart;
     public bool hasDied = false;
@@ -77,9 +78,11 @@ public class PlayerHp : MonoBehaviour
         animator.SetTrigger("death");
 
         hasDied = true;
+        NoPoints();
         StartCoroutine(DeathMenu());
         Destroy(gameObject, 3f);
-        
+
+
 
 
 
@@ -97,9 +100,6 @@ public class PlayerHp : MonoBehaviour
 
             Death();
         }
-
-
-
     }
 
     public void HealthUI ()
@@ -166,7 +166,12 @@ public class PlayerHp : MonoBehaviour
     {
         yield return new WaitForSeconds(1f);
         SceneManager.LoadScene(2);
-
+        GameObject camara = GameObject.Find("Camera");
+        Destroy(camara);
     }
 
+    public void NoPoints()
+    {
+        canGivePoints = false;
+    }
 }
