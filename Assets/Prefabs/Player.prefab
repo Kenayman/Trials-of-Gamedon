@@ -386,7 +386,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -5.5, y: 1.7999878}
+  m_AnchoredPosition: {x: -5.5, y: 1.7999268}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &7503728257334802490
@@ -848,7 +848,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -1383, y: 721}
+  m_AnchoredPosition: {x: -1424, y: 933}
   m_SizeDelta: {x: 45.3131, y: 44.9572}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &1827915129714947831
@@ -908,7 +908,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1827915129933769104
 RectTransform:
   m_ObjectHideFlags: 0
@@ -1531,7 +1531,7 @@ MonoBehaviour:
   Hitbox: {fileID: 1827915130711395965}
   punchRatio: 2.3
   damage: 1
-  speedAtack: 0.49
+  speedAtack: 0.75
   speedNextAtack: 0
 --- !u!114 &1827915130198186754
 MonoBehaviour:
@@ -1991,7 +1991,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 1399.7, y: 670}
+  m_AnchoredPosition: {x: 1399.7, y: 905.03}
   m_SizeDelta: {x: 331.642, y: 323.11}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &2082572155997598084
@@ -2368,6 +2368,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5a9c1364889130d4b8f8ad04057d22f9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  PlayerNames: {fileID: 0}
+  PlayerScores: {fileID: 0}
 --- !u!1 &5781877253629792761
 GameObject:
   m_ObjectHideFlags: 0
@@ -2585,7 +2587,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -21, y: 646}
+  m_AnchoredPosition: {x: 102, y: 884}
   m_SizeDelta: {x: -667.0243, y: -238.86}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &1641202979638319480

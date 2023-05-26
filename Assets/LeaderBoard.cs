@@ -39,7 +39,7 @@ public IEnumerator SumbitScoreRoutine(int scoreToUpload) {
 public IEnumerator TopHighScores()
     {
         bool done = false;
-        LootLockerSDKManager.GetScoreListMain(leaderBoardID, 10, 0, (response) =>
+        LootLockerSDKManager.GetScoreListMain(leaderBoardID, 5, 0, (response) =>
         {
 
             if (response.success)

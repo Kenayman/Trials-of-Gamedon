@@ -351,7 +351,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 'CREDITOS:'
+  m_Text: 'CREDITS:'
 --- !u!222 &43666003
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -1092,8 +1092,7 @@ MonoBehaviour:
     Storm' by @Makai-symphony\nBringer of death - @Clembod\nVillage Props -Cainos\nMonster
     Creature Fantasy - LuizMelo\nAnimated Pixel Adventurer - rvros\nHooded Protagonist
     - Penzilla\nVoyage - Panda Beats\nArcade Hero- Midnight Fury\nArt and GameDesign-
-    Kenaymen\nAutor: \nCamarena Arguelles Kenneth\nSanchez Lopez Paulina\nAlejandro
-    Canales Gonzales\n"
+    Kenaymen\n\n"
 --- !u!222 &147080702
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -2189,7 +2188,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 'CREDITOS:'
+  m_Text: 'CREDITS:'
 --- !u!222 &436250865
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -3659,7 +3658,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 'CREDITOS:'
+  m_Text: 'CREDITS:'
 --- !u!222 &992984691
 CanvasRenderer:
   m_ObjectHideFlags: 0
